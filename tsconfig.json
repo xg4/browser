@@ -17,5 +17,5 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["src", "rollup.config.js"]
+  "include": ["src", "__tests__", "rollup.config.js"]
 }
