@@ -65,18 +65,12 @@ jobs:
       - name: Coverage
         run: npx codecov
 
-  build-and-deploy:
-    needs: [test-ubuntu, test-macOS, test-windows]
+  build:
+    needs: [test-ubuntu, test-macos, test-windows]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@master
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BASE_BRANCH: master
-          BRANCH: gh-pages
-          FOLDER: build
-          BUILD_SCRIPT: yarn && npm run build
+      - name: Build
+        run: npm run build
