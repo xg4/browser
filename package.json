@@ -1,0 +1,77 @@
+{
+  "name": "@xg4/browser",
+  "version": "0.0.0",
+  "description": "browser utils",
+  "keywords": [
+    "browser",
+    "event",
+    "javascript",
+    "listener",
+    "utils"
+  ],
+  "homepage": "https://github.com/xg4/browser#readme",
+  "bugs": {
+    "url": "https://github.com/xg4/browser/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xg4/browser.git"
+  },
+  "license": "MIT",
+  "author": "xg4 <xingor4@gmail.com>",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
+  "types": "dist/types/index.d.ts",
+  "typings": "dist/types/index.d.ts",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "npm run build:types && npm run build:js",
+    "build:js": "rollup -c",
+    "build:types": "tsc --emitDeclarationOnly",
+    "clean": "rimraf dist",
+    "lint": "eslint src/**/* --fix",
+    "start": "rollup -c -w",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md,yml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.4",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "eslint": "^6.7.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.4.3",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.27.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2",
+    "typescript": "^3.7.2"
+  }
+}
